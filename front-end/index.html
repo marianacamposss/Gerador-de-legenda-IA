@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Legendas - Upload</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto:wght@400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+    h1, h2, h3, .btn, .remove-btn, #add-keyword-btn, #submit-btn, #choose-file-label {
+      font-family: 'Poppins', sans-serif;
+    }
+    #file-name-display {
+        word-break: break-all;
+    }
+    .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+  </style>
+</head>
+<body class="bg-[#f4f1bb] text-gray-900 min-h-screen flex items-center justify-center py-10 px-4">
+
+  <div class="upload-container bg-white p-6 sm:p-8 rounded-3xl shadow-xl max-w-xl w-full mx-auto">
+    <h1 class="text-3xl sm:text-4xl font-semibold mb-6 text-[#ed6a5a] text-center">Gere Legendas para seus Posts</h1>
+
+    <!-- Formulário de upload ajustado -->
+    <form id="form-upload" class="space-y-4">
+      <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-2">
+        <label for="file" id="choose-file-label" class="cursor-pointer flex-grow p-3 bg-[#9bc1bc] hover:bg-[#ed6a5a] text-white font-semibold rounded-xl w-full focus:outline-none text-sm text-center">
+          Escolher Arquivo
+        </label>
+        <input type="file" name="file" id="file" accept="image/*" class="visually-hidden">
+      </div>
+      <div id="file-name-display" class="text-sm text-gray-600 mt-1 text-center sm:text-left h-6">Nenhum arquivo selecionado</div>
+    </form>
+
+    <!-- Palavras-chave para geração de legendas -->
+    <div id="keywords-container" class="mt-6 space-y-2">
+      <h3 class="text-lg font-medium text-[#ed6a5a] mb-3">Adicione palavras-chave para gerar legendas:</h3>
+      
+      <div class="keyword-row flex items-center space-x-2 mb-2">
+        <input type="text" class="keyword-input p-3 border border-[#9bc1bc] rounded-xl w-full focus:outline-none focus:ring-2 focus:ring-[#9bc1bc] text-sm placeholder-gray-400" placeholder="Ex: viagem, verão, diversão...">
+        <button type="button" class="remove-btn bg-[#ed6a5a] hover:bg-[#e4998f] text-white font-semibold py-2 px-3 rounded-xl text-sm flex-shrink-0">Remover</button>
+      </div>
+
+      <div class="keyword-row flex items-center space-x-2 mb-2">
+        <input type="text" class="keyword-input p-3 border border-[#9bc1bc] rounded-xl w-full focus:outline-none focus:ring-2 focus:ring-[#9bc1bc] text-sm placeholder-gray-400" placeholder="Ex: tecnologia, inovação...">
+        <button type="button" class="remove-btn bg-[#ed6a5a] hover:bg-[#e4998f] text-white font-semibold py-2 px-3 rounded-xl text-sm flex-shrink-0">Remover</button>
+      </div>
+    </div>
+
+    <div class="flex justify-center mt-4">
+      <button type="button" id="add-keyword-btn" class="bg-[#9bc1bc] hover:bg-[#ed6a5a] text-white font-semibold py-2 px-4 rounded-xl transition duration-300 text-sm">+ Adicionar Palavra-chave</button>
+    </div>
+
+    <!-- ✅ Botão de Enviar movido para baixo -->
+    <div class="flex justify-center mt-4">
+      <button type="submit" form="form-upload" id="submit-btn" class="bg-[#9bc1bc] hover:bg-[#ed6a5a] text-white font-semibold py-3 px-4 rounded-xl transition duration-300 text-sm">
+        Enviar
+      </button>
+    </div>
+
+    <!-- Mensagem ou legenda gerada -->
+    <div class="mensagem mt-6 p-4 border border-[#9bc1bc] rounded-xl bg-gray-50 text-center hidden" id="mensagem">
+      <p class="text-lg text-[#ed6a5a]">Aguardando envio...</p>
+    </div>
+
+    <!-- Lista para exibir as imagens e legendas -->
+    <h3 class="text-xl font-medium text-[#ed6a5a] mt-8 mb-4 text-center" id="historico-titulo" style="display: none;">Histórico de Legendas Geradas:</h3>
+    <ul id="lista-imagens" class="mt-6 space-y-6">
+      <!-- As imagens e legendas geradas serão exibidas aqui -->
+    </ul>
+  </div>
+
+  <script src="script.js"></script> 
+</body>
+</html>
